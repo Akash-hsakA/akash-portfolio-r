@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+/* Define your custom colors here in Tailwind 4 */
+@theme {
+  --color-portfolio-bg: #DDD3FF; /* Your requested background color */
+  --color-text-primary: #1a1a1a;
+}
+
+/* Apply base styles */
+body {
+  background-color: var(--color-portfolio-bg);
+  color: var(--color-text-primary);
+  /* Ensure the body takes up the full screen height so the canvas fits */
+  min-height: 100vh;
+  height: 100dvh;
+  width: 100dvw;
+  margin: 0;
+  /* Prevent scrolling while loading animations happen */
+  overflow: hidden; 
+  background-color: blueviolet;
+}
