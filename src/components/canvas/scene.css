@@ -1,0 +1,12 @@
+@import '../../app/globals.css';
+
+.home-background-1 {
+  width: 100dvw;
+  height: 100dvh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Pushes it behind the UI */
+  background-color: #DDD3FF; /* Your base background color */
+  overflow: hidden;
+}

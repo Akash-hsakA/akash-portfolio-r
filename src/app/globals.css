@@ -17,5 +17,4 @@ body {
   margin: 0;
   /* Prevent scrolling while loading animations happen */
   overflow: hidden; 
-  background-color: blueviolet;
 }
