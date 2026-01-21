@@ -92,34 +92,47 @@ export default function FullScreenMenu({ isOpen, onClose }: MenuProps) {
 
       <div className="grid-menu-continer">
         {MENU_ITEMS.map((item, index) => {
-          // 3. LOGIC CHECKS
+          // 1. Logic Checks
           const isCurrentPage = item.href === pathname;
           const hasLink = item.href && item.href !== "";
 
-          // 4. Decide Tag: Always use Link if a URL exists (even for current page)
-          const Tag = hasLink ? Link : "div";
-
-          // 5. Determine Class Name
+          // 2. Determine Class Name
           let statusClass = "disabled-link";
           if (isCurrentPage) {
-            statusClass = "same-page-link"; // Active page styling
+            statusClass = "same-page-link";
           } else if (hasLink) {
-            statusClass = "active-link"; // Normal link styling
+            statusClass = "active-link";
           }
 
-          return (
-            <Tag
-              key={index}
-              // Always pass href if it's a Link
-              href={hasLink ? item.href : undefined}
-              className={`card-text-box ${statusClass}`}
-              onClick={onClose} // Optional: Close menu on click
-            >
+          // 3. Define content to avoid repetition
+          const cardContent = (
+            <>
               <div className="image-wrapper">
                 <Image src={item.image} alt={item.label} fill className="card-img" />
               </div>
               <span className="text-menu">{item.label}</span>
-            </Tag>
+            </>
+          );
+
+          // 4. FIX: Conditionally return Link OR Div
+          // This avoids passing 'undefined' to Link's href
+          if (hasLink) {
+            return (
+              <Link
+                key={index}
+                href={item.href} // Guaranteed to be a string here
+                className={`card-text-box ${statusClass}`}
+                onClick={onClose}
+              >
+                {cardContent}
+              </Link>
+            );
+          }
+
+          return (
+            <div key={index} className={`card-text-box ${statusClass}`} onClick={onClose}>
+              {cardContent}
+            </div>
           );
         })}
       </div>
