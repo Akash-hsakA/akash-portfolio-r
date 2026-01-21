@@ -7,7 +7,7 @@ import VariableProximity from "@/components/canvas/text-animation/VariableProxim
 import "./page.css";
 
 export default function CodingPage() {
-  const containerRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   return (
     <main className="coding-page-main-container">
