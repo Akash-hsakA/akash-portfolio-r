@@ -5,7 +5,6 @@ import VariableProximity from "@/components/canvas/text-animation/VariableProxim
 import TextMarquee from "@/components/canvas/text-animation/TextMarquee";
 import BeamsBG from "@/components/canvas/background/Beams";
 import DarkVeil from "@/components/canvas/background/DarkVeil";
-import Topography from "@/components/canvas/background/TopographyBackground";
 
 import "./page.css";
 
@@ -61,11 +60,6 @@ export default function DemoPage() {
         {/* <DarkVeil /> */}
       </section>
       <section style={{ position: "relative", minHeight: "100dvh" }}>
-        {/* <Topography
-          lineColor="#ffffff"
-          backgroundColor="#070707"
-          density={20} // Try 20 for loose maps, 50 for dense maps
-        /> */}
       </section>
     </main>
   );
