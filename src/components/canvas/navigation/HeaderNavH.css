@@ -1,0 +1,60 @@
+.header-nav {
+  position: fixed;
+  top: calc(5dvw - 10px);
+  right: calc(5dvw - 10px);
+  z-index: 10;
+  background: transparent;
+}
+
+/* 1. The Wrapper (Scene) - Defines the space */
+.nav-scene {
+  width: 4rem;
+  height: 4rem;
+  /* height: 12rem; */
+  perspective: 1000px; /* Gives it 3D depth */
+  cursor: var(--ponter-mouse-cursor);
+  padding: 10px;
+  /* background-color: aquamarine; */
+}
+
+/* 2. The Moving Part (Flipper) */
+.nav-flipper {
+  width: 4rem;
+  height: 4rem;
+  /* height: 12rem; */
+  position: relative;
+  /* transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); */
+  transform-style: preserve-3d; /* Crucial: lets children exist in 3D space */
+}
+
+/* 3. The Trigger (Hover) */
+.nav-scene:hover .nav-flipper {
+  transform: rotateY(180deg); /* SPIN ACTION */
+}
+
+/* 4. Common Styles for Both Faces */
+.nav-face {
+  position: absolute;
+  inset: 0; /* Fill the container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(10px 10px 5px #00000050);
+  /* Hide the back of the card when flipped */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+
+.nav-back {
+  transform: rotateY(180deg); /* Starts pre-flipped */
+  background: #33333300; /* Optional: Make back slightly lighter/different */
+}
+
+
+@media (max-width: 768px) {
+  .header-nav {
+    top: 10dvw;
+    right: 3dvw;
+  }
+}

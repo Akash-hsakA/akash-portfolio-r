@@ -1,10 +1,12 @@
-// src/app/layout.tsx
+/* src/app/layout.tsx */
 import type { Metadata } from "next";
-import './globals.css';
+import "./globals.css";
+import { LoaderProvider } from "@/context/LoaderContext"; // Import Context
+import GlobalLoader from "@/components/layout/GlobalLoader"; // We create this next
 
 export const metadata: Metadata = {
-  title: "Akash | Creative Developer",
-  description: "3D Portfolio built with Next.js 16, GSAP, and R3F",
+  title: "Akash | Portfolio",
+  description: "Cyber-System Portfolio",
 };
 
 export default function RootLayout({
@@ -14,9 +16,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased">
-        {/* All your pages (page.tsx) will be injected here */}
-        {children}
+      <body>
+        <LoaderProvider>
+          {/* This component handles showing the Preloader based on context */}
+          <GlobalLoader />
+          
+          {/* The rest of your app */}
+          {children}
+        </LoaderProvider>
       </body>
     </html>
   );

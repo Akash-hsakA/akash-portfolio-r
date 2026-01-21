@@ -1,0 +1,123 @@
+.full-screen-menu-continer {
+  width: 90dvw;
+  height: 98%;
+  /* background-color: #070707; */
+  background-color: #070707;
+  display: flex;
+  flex-direction: column;
+  padding: 3dvw 5dvw;
+  gap: 5dvw;
+  position: absolute;
+  z-index: 99999;
+  /* cursor: url('/assets/cursor/default.svg') 10 2, default; */
+  cursor: var(--default-mouse-cursor);
+  overflow-y: scroll;
+  overscroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background-color: #070707;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fffaf5; 
+  border-radius: 20px;
+}
+
+.space-filler {
+  width: 90dvw;
+  height: 100dvh;
+}
+
+.close-continer {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.close-bts {
+  background: transparent;
+  border-color: transparent;
+  border: none;
+}
+
+.close-bts > svg {
+  fill: #fffaf5;
+  width: 2dvw;
+  height: auto;
+}
+
+.grid-menu-continer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(10px, 50px + 1dvw, 3dvw);
+  align-content: start;
+  justify-content: center;
+  align-items: start;
+  justify-items: center;
+}
+
+.grid-menu-continer > a {
+  text-decoration: none;
+}
+
+.card-text-box {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.card-img {
+  position: relative !important;
+  width: 100% !important;
+  height: fit-content !important;
+}
+
+.text-menu {
+  font-family: "figtree", sans-serif;
+  font-size: clamp(14px, 1dvw + 0.5rem, 2rem);
+  font-weight: 600;
+  color: #fffaf5;
+  text-decoration: none;
+}
+
+/* 1. ACTIVE LINK (Has href) */
+.card-text-box.active-link {
+  /* cursor: url('/assets/cursor/pointer.svg') 10 2, pointer; */
+  cursor: var(--ponter-mouse-cursor);
+  opacity: 1;
+}
+
+/* 2. DISABLED LINK (No href) */
+.card-text-box.disabled-link {
+  /* cursor: url('/assets/cursor/not-allowed.svg') 10 10, not-allowed; */
+  cursor: var(--notallowed-mouse-cursor);
+  opacity: 1;
+}
+
+.card-text-box.same-page-link {
+  /* Use your specific svg here */
+  /* cursor: url('/assets/cursor/not-allowed.svg') 10 10, not-allowed; */
+  cursor: var(--notallowed-mouse-cursor);
+  opacity: 0.5;
+}
+
+/* Optional: Ensure the image inside doesn't steal the hover state */
+.card-text-box * {
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .close-bts > svg {
+    width: 5dvw;
+  }
+}

@@ -1,0 +1,25 @@
+/* src/components/ui/TextMarquee.css */
+
+.marquee-wrapper {
+  width: 100%;
+  overflow: hidden; /* Hide the text as it moves off screen */
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+}
+
+.marquee-track {
+  display: flex;
+  width: fit-content; /* Allow track to be as wide as the text needs */
+  white-space: nowrap; /* Force text to stay on one line */
+  will-change: transform; /* Hint to browser to optimize for movement */
+}
+
+.marquee-text {
+  /* Ensure the text itself renders nicely */
+  font-family: 'Arcon', sans-serif;
+  /* Use hardware acceleration hint for the text elements too */
+  will-change: transform;
+  /* Prevent text selection while scrolling */
+  user-select: none; 
+}

@@ -1,0 +1,21 @@
+.coding-page-main-container{
+  cursor: var(--default-mouse-cursor);
+}
+
+.object3D-container {
+  /* 1. Position it ON TOP of everything */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+
+  /* 2. Z-Index: Higher than your scroll content (which is usually 1) */
+  z-index: 2; 
+
+  /* 3. CRITICAL: Let clicks scroll the page behind this layer */
+  pointer-events: none; 
+
+  /* Ensure background is transparent */
+  background: transparent;
+}

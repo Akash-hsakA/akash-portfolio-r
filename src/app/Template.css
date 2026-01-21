@@ -1,0 +1,19 @@
+/* src/app/Template.css */
+
+/* The main container for the page content */
+.template-wrapper {
+  width: 100dvw;
+  height: 100dvh;
+  position: relative;
+}
+
+/* The container that holds the Terminal during the Exit animation */
+.exit-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  z-index: 50; /* High z-index to sit on top of the page content */
+  pointer-events: none; /* Allows clicks to pass through if it's invisible */
+}

@@ -1,0 +1,26 @@
+
+::-webkit-scrollbar{
+  width: 0px;
+}
+
+/* Debug Styles (Optional) */
+.test-variable-proximity-container {
+  width: 100dvw;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  margin-top: 20px;
+}
+
+.test-variable-font {
+  font-family: 'InterLocal', sans-serif;
+  font-variation-settings: 'wght' 100;
+  font-size: 3rem;
+  transition: font-variation-settings 0.3s ease;
+}
+
+.test-variable-font:hover {
+  font-variation-settings: 'wght' 900;
+}

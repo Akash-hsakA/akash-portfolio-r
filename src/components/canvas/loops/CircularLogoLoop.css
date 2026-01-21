@@ -1,0 +1,26 @@
+/* 1. The Orbit Animation */
+@keyframes orbit-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 2. The Counter-Rotation (Keeps images upright) */
+@keyframes orbit-counter-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+.orbit-container {
+  /* Use CSS variable for flexible speed */
+  animation: orbit-spin var(--duration, 20s) linear infinite;
+}
+
+.orbit-item {
+  animation: orbit-counter-spin var(--duration, 20s) linear infinite;
+}
+
+/* 3. Pause EVERYTHING on hover */
+.orbit-wrapper:hover .orbit-container,
+.orbit-wrapper:hover .orbit-item {
+  animation-play-state: paused;
+}

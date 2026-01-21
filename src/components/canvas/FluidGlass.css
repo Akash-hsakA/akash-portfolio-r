@@ -1,0 +1,11 @@
+
+.pointer-tracker-layer {
+    width: 100dvw;
+    height: 100dvh;
+    position: absolute;
+    /* top: 0; */
+    /* left: 0; */
+    /* background: linear-gradient(to bottom right, rgb(62, 184, 190), rgb(16, 65, 57)); */
+    background-color: transparent !important;
+    z-index: 90;
+}

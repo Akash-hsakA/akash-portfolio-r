@@ -1,0 +1,121 @@
+/* src/components/canvas/DragClick.css */
+
+/* --- Container for the Full Size Image --- */
+.drag-area-container {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  pointer-events: none; /* Let clicks pass through when hidden */
+  z-index: 10;
+  /* background-color: black; */
+}
+
+/* --- Full Size Image State --- */
+.full-size {
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+  height: 80%;
+  display: none;
+  pointer-events: auto; /* Enable clicking to close */
+}
+
+.full-size.active {
+  display: block;
+  z-index: 10;
+  filter: drop-shadow(15px 15px 10px #00000060);
+  cursor: var(--ponter-mouse-cursor);
+}
+
+/* Thumbnail Image Size */
+.thumbnail,
+.drag-container {
+  width: 150px;
+  height: 210px;
+}
+
+/* --- Thumbnail Image --- */
+.thumbnail {
+  display: block;
+  /* Next.js Image fix: ensure object-fit if using next/image */
+  object-fit: cover;
+  filter: drop-shadow(15px 15px 10px #00000060);
+}
+
+/* --- Draggable Wrapper --- */
+.drag-container {
+  position: absolute; /* Changed from relative to absolute for placement */
+  bottom: 50px; /* Place it somewhere nice */
+  right: 50px;
+  padding: 10px;
+  border: dashed 2px #222222; /* Using rgba for "white" */
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  cursor: var(--grab-mouse-cursor) !important;
+}
+
+.drag-container:active {
+  cursor: var(--grabbing-mouse-cursor) !important;
+}
+
+/* --- The "Drag Me" Arrow & Text --- */
+.drag-container::after {
+  /* content: "drag & click me..."; */
+  position: absolute;
+  width: 200px;
+  height: auto;
+  /* Text Color */
+  color: #222222;
+  font-family: "figtree", sans-serif;
+  font-size: clamp(1.2rem, 1.2dvw, 2rem);
+  font-weight: 700;
+  text-align: center;
+  /* Position relative to the box */
+  bottom: 100%;
+  pointer-events: none; /* Don't block dragging */
+  margin: 20px;
+}
+
+/* Visibility Logic for Flip */
+.thumbnail.active {
+  visibility: hidden;
+  opacity: 0;
+}
+.thumbnail,
+.thumbnail.flipping {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .drag-container {
+    bottom: 10dvw;
+    right: 10dvw;
+  }
+  .full-size {
+    width: 90dvw;
+    height: auto;
+  }
+  .drag-container {
+    border: dashed 2px #222222; /* Using rgba for "white" */
+    backdrop-filter: blur(0px);
+  }
+  .thumbnail,
+  .drag-container {
+    width: 100px;
+    height: 140px;
+  }
+  .drag-area-container{
+    padding-bottom: 25%;
+  }
+}

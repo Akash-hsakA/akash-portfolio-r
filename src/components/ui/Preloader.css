@@ -1,0 +1,69 @@
+/* src/components/ui/Preloader.css */
+
+.preloader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  background-color: #fffaf5; /* Matches your site's light theme */
+  z-index: 9999; /* Must be on top of everything */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #111111;
+  font-family: 'Courier New', Courier, monospace; /* Technical font */
+  overflow: hidden;
+}
+
+/* The Wrapper for the Line and Text */
+.loader-wrapper {
+  width: 80%;
+  max-width: 800px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* The Text Row (Loading ... URL) */
+.loader-text-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0; /* Hidden initially, revealed by GSAP */
+}
+
+/* The Horizontal Line Container */
+.progress-line-bg {
+  width: 100%;
+  height: 1px;
+  background-color: #e5e5e5; /* Faint grey background line */
+  position: relative;
+  overflow: hidden;
+}
+
+/* The Actual Filling Bar */
+.progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%; /* Starts at 0 */
+  background-color: #111111;
+}
+
+/* Optional: The "Sound" button area (centered bottom) */
+.bottom-text {
+  position: absolute;
+  bottom: 8dvh;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.5;
+}

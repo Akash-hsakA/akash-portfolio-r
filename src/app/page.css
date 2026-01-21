@@ -1,0 +1,16 @@
+.main-container {
+  position: relative;
+  width: 100dvw;
+  height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  perspective: 1000px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: var(--default-mouse-cursor);
+}

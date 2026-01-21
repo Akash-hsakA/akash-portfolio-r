@@ -1,0 +1,29 @@
+.scene-background-1 {
+  width: 100dvw;
+  height: 100dvh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-color: #ddd3ff;
+  /* background-color: transparent; */
+  overflow: hidden;
+}
+
+.scene-overlay {
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  background-color: #00000010;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10%;
+  backdrop-filter: blur(10px);
+  /* backdrop-filter: grayscale(50%); */
+  /* backdrop-filter: hue-rotate(120deg); */
+  /* backdrop-filter: invert(70%); */
+  /* backdrop-filter: sepia(90%); */
+  /* backdrop-filter: saturate(80%); */
+}

@@ -1,0 +1,57 @@
+/* src/app/globals.css */
+body {
+  margin: 0;
+  padding: 0;
+  /* overflow: hidden; */
+}
+
+.coding-page-main-container {
+  width: 100dvw;
+  /* height: 100dvh; */
+}
+.scrollable-container {
+  position: relative;
+  width: 100dvw;
+  height: 100%;
+  background-color: tomato;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+.scroll-container-1 {
+  width: 100dvw;
+  height: 100dvh;
+  align-content: center;
+  text-align: center;
+}
+
+.scroll-container-2 {
+  width: 100dvw;
+  height: auto;
+  background-color: #070707;
+  background-image: url("/assets/background/variable-proximity-section-bg-01.svg");
+}
+
+.use-inter-local {
+  height: 100dvh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: var(--default-mouse-cursor);
+}
+
+.variable-proximity {
+  font-size: clamp(20px, 10dvw, 80px);
+  color: #ffffff;
+  text-align: center;
+  padding-left: clamp(50px, 15dvw, 300px);
+  padding-right: clamp(50px, 15dvw, 300px);
+}
+
+.scroll-container-3 {
+  width: 100dvw;
+  height: 100dvh;
+  background-color: #FFFAF5;
+}

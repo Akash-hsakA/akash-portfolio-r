@@ -1,0 +1,54 @@
+/* Container: Relative to hold the absolute layers */
+.parallax-hero-container {
+  /* display: none; */
+  /* position: relative; */
+  top: 5dvw;
+  left: 5dvw;
+  width: 70dvw;
+  height: 20dvw;
+  overflow: hidden;
+  z-index: 0;
+  padding: 5dvw;
+  /* border: 12px solid red;  */
+  cursor: var(--move-mouse-cursor-default);
+}
+
+/* Common style for all 5 layers */
+.parallax-layer {
+  position: absolute;
+  top: 6dvw;
+  left: 3dvw;
+  width: 70dvw;
+  height: 20dvw;
+  pointer-events: none; /* Let clicks pass through to text/buttons */
+  will-change: transform; /* Performance hint for smoother animation */
+
+  /* Scale up slightly to prevent white edges showing when moving */
+  transform: scale(1.1);
+}
+
+/* .mask-layer {
+  position: absolute;
+  top: 0dvw;
+  left: 0dvw;
+  width: 66dvw;
+  height: 22dvw;
+  border-radius: 20px;
+  border: 5dvw solid #fffaf5;
+} */
+
+/* Ensure the Next.js image fills the layer */
+.parallax-layer img {
+  object-fit: contain;
+  /* width: 100%; */
+  /* height: 100%; */
+}
+
+/* --- RESPONSIVE LOGIC --- */
+
+/* Only show this component on screens larger than 768px (Desktop/Tablet) */
+@media (max-width: 768px) {
+  .parallax-hero-container {
+    display: none;
+  }
+}
