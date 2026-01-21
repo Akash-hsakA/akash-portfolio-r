@@ -50,7 +50,7 @@ export default function CursorTilt({ children, className, id }: CursorTiltProps)
 
       gsap.to(containerRef.current, {
         rotationY: gamma,       // Rotate based on phone tilt
-        rotationX: -beta + 30,  // Subtract 30 to compensate for holding phone at angle
+        rotationX: -beta,  // Subtract 30 to compensate for holding phone at angle
         duration: 2,            // Slower duration for smoother mobile feel
         ease: "power2.out",
         transformPerspective: 1000,

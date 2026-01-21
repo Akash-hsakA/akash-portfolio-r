@@ -12,7 +12,7 @@ if (typeof window !== "undefined") {
 }
 
 const CONFIG = {
-  // Next.js serves "public/assets/..." as "/assets/..."
+
   thumbnailSrc: "/assets/cards/card-a-spade-05.png",
   fullSizeSrc: "/assets/cards/card-back-02.png" 
 };
@@ -22,8 +22,8 @@ export default function DragClick() {
   const dragRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    // SAFETY CHECK: If the element doesn't exist, stop immediately.
-    if (!dragRef.current) return;
+    
+    if (!dragRef.current) return;  // SAFETY CHECK: If the element doesn't exist, stop immediately.
 
     // Create Draggable on the specific element
     const tracker = Draggable.create(dragRef.current, {
