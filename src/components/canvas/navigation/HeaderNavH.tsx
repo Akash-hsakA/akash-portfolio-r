@@ -13,20 +13,21 @@ export default function HeaderNavH() {
   // 1. State to control the Menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // useEffect(() => {
-  //   // Find the main container in the DOM
-  //   const mainContainer = document.querySelector(".main-container") as HTMLElement;
+  useEffect(() => {
+    // 1. Lock/Unlock scrolling on the BODY element
+    if (isMenuOpen) {
+      // When menu is OPEN: Lock body scroll
+      document.body.style.overflow = "hidden";
+    } else {
+      // When menu is CLOSED: Restore body scroll
+      document.body.style.overflow = "";
+    }
 
-  //   if (mainContainer) {
-  //     if (isMenuOpen) {
-  //       // When menu is OPEN: Allow scrolling
-  //       mainContainer.style.overflowY = "scroll";
-  //     } else {
-  //       // When menu is CLOSED: Lock scrolling (Hidden)
-  //       mainContainer.style.overflowY = "hidden";
-  //     }
-  //   }
-  // }, [isMenuOpen]); // Re-run this whenever isMenuOpen changes
+    // 2. Cleanup: Always restore scroll if the component unmounts
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
 
   useGSAP(
     () => {
@@ -68,7 +69,7 @@ export default function HeaderNavH() {
         container.current?.removeEventListener("mouseleave", onLeave);
       };
     },
-    { scope: container }
+    { scope: container },
   );
 
   return (

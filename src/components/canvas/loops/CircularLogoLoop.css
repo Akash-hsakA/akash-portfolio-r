@@ -1,26 +1,103 @@
-/* 1. The Orbit Animation */
+/* src/components/ui/CircularLogoLoop.css */
+
+/* --- 1. Main Layout & Positioning --- */
+.orbit-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Size is handled via inline styles in React */
+}
+
+.orbit-background {
+  position: absolute;
+  border-radius: 50%;
+  border-style: solid;
+}
+
+.orbit-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: orbit-spin var(--duration, 20s) linear infinite;
+  border-radius: 50%;
+}
+
+/* Wrapper that positions the item on the circle */
+.orbit-item-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- 2. Animations --- */
 @keyframes orbit-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
-/* 2. The Counter-Rotation (Keeps images upright) */
 @keyframes orbit-counter-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(-360deg); }
 }
 
-.orbit-container {
-  /* Use CSS variable for flexible speed */
-  animation: orbit-spin var(--duration, 20s) linear infinite;
-}
-
+/* The counter-rotating container to keep logos upright */
 .orbit-item {
+  width: 100%;
+  height: 100%;
   animation: orbit-counter-spin var(--duration, 20s) linear infinite;
 }
 
-/* 3. Pause EVERYTHING on hover */
+/* Hover: Pause everything */
 .orbit-wrapper:hover .orbit-container,
 .orbit-wrapper:hover .orbit-item {
   animation-play-state: paused;
+}
+
+/* --- 3. Logo Styling (The Visual Part) --- */
+.orbit-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.orbit-logo-target {
+  width: 100%;
+  height: 100%;
+  
+  /* Visual Styles */
+  /* background-color: #000000cc; */
+  /* backdrop-filter: blur(12px);         */
+  /* border-radius: 50%;                */
+  /* border: 1px solid rgba(255, 255, 255, 0.2); */
+  
+  /* Layout inside the bubble */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  /* Hover Transition */
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.orbit-logo-target:hover {
+  transform: scale(1.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Padding container for the image */
+.orbit-logo-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 12px; /* Replaces 'p-3' */
+}
+
+/* Ensure image fits perfectly */
+.orbit-image {
+  object-fit: contain;
 }

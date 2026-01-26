@@ -1,13 +1,13 @@
 .full-screen-menu-continer {
   width: 90dvw;
-  height: 98%;
+  height: 94dvh;
   /* background-color: #070707; */
   background-color: #070707;
   display: flex;
   flex-direction: column;
   padding: 3dvw 5dvw;
   gap: 5dvw;
-  position: absolute;
+  position: fixed;
   z-index: 99999;
   /* cursor: url('/assets/cursor/default.svg') 10 2, default; */
   cursor: var(--default-mouse-cursor);

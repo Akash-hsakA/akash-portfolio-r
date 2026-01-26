@@ -9,11 +9,12 @@ body {
   width: 100dvw;
   /* height: 100dvh; */
 }
+
 .scrollable-container {
   position: relative;
   width: 100dvw;
   height: 100%;
-  background-color: tomato;
+  background-color: #ff6347;
   overflow-y: scroll;
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
@@ -29,7 +30,8 @@ body {
 .scroll-container-2 {
   width: 100dvw;
   height: auto;
-  background-color: #070707;
+  /* background-color: #070707; */
+  background-color:rgb(0, 0, 84); 
   background-image: url("/assets/background/variable-proximity-section-bg-01.svg");
 }
 
@@ -43,8 +45,8 @@ body {
 }
 
 .variable-proximity {
-  font-size: clamp(20px, 10dvw, 80px);
-  color: #ffffff;
+  font-size: clamp(20px, 10dvw, 100px);
+  color: #fffaf5;
   text-align: center;
   padding-left: clamp(50px, 15dvw, 300px);
   padding-right: clamp(50px, 15dvw, 300px);
@@ -53,5 +55,31 @@ body {
 .scroll-container-3 {
   width: 100dvw;
   height: 100dvh;
-  background-color: #FFFAF5;
+  /* background-color: #fffaf5; */
+  background-color: tomato;
+  align-items: center;
+  justify-content: center;
+  /* background-image: url("/assets/background/variable-proximity-section-bg-02.svg"); */
+}
+
+.text-container {
+  padding: 15dvh 15dvw;
+}
+
+.highlighted-text {
+  font-family: "Arcon";
+  font-weight: 800;
+  font-size: calc(2.5dvw + 1rem);
+  color: #070707;
+}
+
+@media (max-width: 768px) {
+  .text-container {
+    padding: 5dvh 10dvw;
+  }
+
+  .highlighted-text {
+    font-size: calc(5dvw + 0.5rem);
+    text-align: justify;
+  }
 }
