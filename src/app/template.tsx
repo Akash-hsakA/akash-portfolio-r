@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
-import TerminalOverlay from "@/components/canvas/coding-page/TerminalOverlay";
+import TerminalOverlay from "@/components/page-loader-ui/coding-page/TerminalOverlay";
 import "./Template.css"; // 1. Import the CSS file
 
 // ... (Keep your VARIANTS constant here) ...

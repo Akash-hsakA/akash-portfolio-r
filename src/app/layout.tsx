@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { LoaderProvider } from "@/context/LoaderContext"; // Import Context
 import GlobalLoader from "@/components/layout/GlobalLoader"; // We create this next
+import SmallNavMenu from "@/components/canvas/navigation/SmallNavMenu";
 
 export const metadata: Metadata = {
   title: "Akash | Portfolio",
@@ -23,6 +24,7 @@ export default function RootLayout({
           
           {/* The rest of your app */}
           {children}
+          <SmallNavMenu />
         </LoaderProvider>
       </body>
     </html>

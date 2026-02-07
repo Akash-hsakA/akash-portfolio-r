@@ -1,9 +1,10 @@
 .header-nav {
   position: fixed;
-  top: calc(5dvw - 10px);
-  right: calc(5dvw - 10px);
-  z-index: 10;
+  top: 2dvw;
+  right: 2dvw;
+  z-index: 999999;
   background: transparent;
+  display: flex;
 }
 
 /* 1. The Wrapper (Scene) - Defines the space */
@@ -13,7 +14,6 @@
   /* height: 12rem; */
   perspective: 1000px; /* Gives it 3D depth */
   cursor: var(--ponter-mouse-cursor);
-  padding: 10px;
   /* background-color: aquamarine; */
 }
 
@@ -39,7 +39,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(10px 10px 5px #00000050);
+  /* filter: drop-shadow(10px 10px 5px #00000050); */
   /* Hide the back of the card when flipped */
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;

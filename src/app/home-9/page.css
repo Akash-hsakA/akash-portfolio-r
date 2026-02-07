@@ -1,0 +1,31 @@
+.main-container {
+  position: relative;
+  width: 100dvw;
+  height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  perspective: 1000px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: var(--default-mouse-cursor);
+  background-image: url("/assets/background/light-grid-grain-bg.svg");
+  background-size: cover;
+}
+
+.blur-text-heading {
+  font-size: Clamp(2rem, 4dvw, 6rem);
+  color: #070707 ;
+}
+
+.blur-text-small{
+  font-size: Clamp(1.2rem, 1.5dvw, 3rem);
+  color: #070707 ;
+}
+
+.drag-container {
+  border: dashed 2px #070707; /* Using rgba for "white" */
+}

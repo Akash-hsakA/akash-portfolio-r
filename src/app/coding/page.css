@@ -5,6 +5,11 @@ body {
   /* overflow: hidden; */
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+  background-color: #07070700;
+}
+
 .coding-page-main-container {
   width: 100dvw;
   /* height: 100dvh; */

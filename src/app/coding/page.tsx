@@ -1,7 +1,7 @@
 "use client";
 import { useRef } from "react";
 import HeaderNavH from "@/components/canvas/navigation/HeaderNavH";
-import MagnetLines from "@/components/ui-animations/MagnetLines";
+import MagnetLines from "@/components/ui/MagnetLines";
 import VariableProximity from "@/components/canvas/text-animation/VariableProximity";
 import TextMarquee from "@/components/canvas/text-animation/TextMarquee";
 import ScrollReveal from "@/components/canvas/text-animation/ScrollReveal";

@@ -1,23 +1,40 @@
+.position-continer {
+  width: 100dvw;
+  height: 100dvh;
+  overflow: hidden;
+  z-index: 99999;
+  position: fixed;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: flex-start;
+  
+}
+
 .full-screen-menu-continer {
-  width: 90dvw;
-  height: 94dvh;
-  /* background-color: #070707; */
-  background-color: #070707;
+  width: fit-content;
+  height: 60dvh;
+  /* using the border as a padding */
+  border: 20px solid #222222;
   display: flex;
   flex-direction: column;
-  padding: 3dvw 5dvw;
-  gap: 5dvw;
-  position: fixed;
-  z-index: 99999;
-  /* cursor: url('/assets/cursor/default.svg') 10 2, default; */
+  /* calc( header-nav top + header-nav size + gap ) */
+  margin-top: calc(2dvw + 4rem + 1rem); 
+  margin-right: 2dvw;
+}
+
+.full-screen-menu-continer {
+  /* background-color: #070707; */
+  background-color: #222222;
   cursor: var(--default-mouse-cursor);
   overflow-y: scroll;
   overscroll-behavior: smooth;
+  border-radius: 0.5dvw;
 }
 
 ::-webkit-scrollbar {
-  width: 0px;
-  background-color: #070707;
+  width: 5px;
+  background-color: #07070700;
 }
 
 ::-webkit-scrollbar-track {
@@ -25,16 +42,17 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #fffaf5; 
+  background: #fffaf500;
   border-radius: 20px;
 }
 
 .space-filler {
-  width: 90dvw;
+  width: 100%;
   height: 100dvh;
 }
 
 .close-continer {
+  position: absolute;
   display: flex;
   flex-direction: row-reverse;
   align-items: flex-start;
@@ -48,15 +66,15 @@
 }
 
 .close-bts > svg {
-  fill: #fffaf5;
+  fill: #222222;
   width: 2dvw;
   height: auto;
 }
 
 .grid-menu-continer {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(10px, 50px + 1dvw, 3dvw);
+  grid-template-columns: repeat(1, 1fr);
+  gap: 16px;
   align-content: start;
   justify-content: center;
   align-items: start;
@@ -71,23 +89,39 @@
   width: 100%;
   height: fit-content;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
+}
+
+.image-wrapper{
+  width: 84px;
+  height: 60px;
 }
 
 .card-img {
   position: relative !important;
-  width: 100% !important;
+  /* width: 100px !important; */
   height: fit-content !important;
+}
+
+.text-wrapper {
+  width: 200px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  background-color: #fffaf5;
+  border-radius: 6px;
 }
 
 .text-menu {
   font-family: "figtree", sans-serif;
   font-size: clamp(14px, 1dvw + 0.5rem, 2rem);
   font-weight: 600;
-  color: #fffaf5;
+  color: #222222;
   text-decoration: none;
+  padding-left: 20px;
 }
 
 /* 1. ACTIVE LINK (Has href) */

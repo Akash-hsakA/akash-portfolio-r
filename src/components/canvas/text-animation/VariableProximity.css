@@ -1,9 +1,7 @@
 /* 1. Define the Variable Font locally */
 @font-face {
   font-family: "InterLocal";
-  /* This path looks inside your 'public' folder automatically */
   src: url("/assets/fonts/InterVariable.woff2") format("woff2-variations");
-  /* IMPORTANT: Define the weight range so the browser knows it can animate */
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;

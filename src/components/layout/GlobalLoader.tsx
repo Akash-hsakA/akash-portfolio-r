@@ -1,7 +1,7 @@
 "use client";
 
 import { useLoader } from "@/context/LoaderContext";
-import Preloader from "@/components/ui/Preloader";
+import Preloader from "@/components/page-loader-ui/Preloader";
 import { AnimatePresence } from "motion/react";
 
 export default function GlobalLoader() {

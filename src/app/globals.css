@@ -195,11 +195,18 @@ body {
 /* added by me  */
 
 :root {
-  --ponter-mouse-cursor: url('/assets/cursor/pointer.svg') 10 10, pointer;
-  --default-mouse-cursor: url('/assets/cursor/default.svg') 10 10, default;
-  --notallowed-mouse-cursor: url('/assets/cursor/not-allowed.svg') 10 10, not-allowed;
-  --move-mouse-cursor-default: url('/assets/cursor/move.svg') 10 10, default;
-  --move-mouse-cursor: url('/assets/cursor/move.svg') 10 10, move;
-  --grab-mouse-cursor: url('/assets/cursor/grab.svg') 10 10, grab;
-  --grabbing-mouse-cursor: url('/assets/cursor/grabbing.svg') 10 10, grabbing;
+  /* --ponter-mouse-cursor: url('/assets/cursor/pointer.svg') 10 10, pointer; */
+  --ponter-mouse-cursor: pointer;
+  /* --default-mouse-cursor: url('/assets/cursor/default.svg') 10 10, default; */
+  --default-mouse-cursor: default;
+  /* --notallowed-mouse-cursor: url('/assets/cursor/not-allowed.svg') 10 10, not-allowed; */
+  --notallowed-mouse-cursor: not-allowed;
+  /* --move-mouse-cursor-default: url('/assets/cursor/move.svg') 10 10, default; */
+  --move-mouse-cursor-default: default;
+  /* --move-mouse-cursor: url('/assets/cursor/move.svg') 10 10, move; */
+  --move-mouse-cursor: move;
+  /* --grab-mouse-cursor: url('/assets/cursor/grab.svg') 10 10, grab; */
+  --grab-mouse-cursor: grab;
+  /* --grabbing-mouse-cursor: url('/assets/cursor/grabbing.svg') 10 10, grabbing; */
+  --grabbing-mouse-cursor: grabbing;
 }

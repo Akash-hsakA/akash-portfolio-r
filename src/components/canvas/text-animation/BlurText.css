@@ -15,8 +15,6 @@
 
 .blur-text-heading {
   font-family: 'obodo-regular';
-  font-size: Clamp(2rem, 4dvw, 6rem);
-  color: #222222 ;
   text-align: left;
   padding: 0px;
   margin: 0px;
@@ -24,8 +22,6 @@
 
 .blur-text-small{
   font-family: 'figtree', sans-serif;
-  font-size: Clamp(1.2rem, 1.5dvw, 3rem);
-  color: #444444 ;
   text-align: left;
   padding: 0px;
   margin: 0px;

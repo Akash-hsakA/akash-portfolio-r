@@ -1,19 +1,8 @@
 "use client";
-import { useLoader } from "@/context/LoaderContext"; // 1. Use Context
+import { useLoader } from "@/context/LoaderContext";
+import DragClick from "@/components/ui/DragClick";
 
-// import { useState, useEffect } from "react";
-// import Preloader from "@/components/ui/Preloader";
-import BlurText from "@/components/canvas/text-animation/BlurText";
-
-import CursorTilt from "@/components/canvas/home-page/CursorTilt";
-import ParallaxHero from "@/components/canvas/home-page/ParallaxHero";
-
-import DragClick from "@/components/canvas/home-page/DragClick";
-import HeaderNavH from "@/components/canvas/navigation/HeaderNavH";
-
-import Image from "next/image";
-// import bgImageDesktop from "../../public/image/home-page-image/portfolio-home-page-desktop-image.png";
-import bgImageMobile from "../../public/image/home-page-image/portfolio-home-page-mobile-image.png";
+import { MeshGradient } from "@paper-design/shaders-react";
 
 import "./globals.css";
 import "./page.css";
@@ -26,58 +15,28 @@ export default function Home() {
   const textDelay = isLoading ? 6500 : 200;
 
   return (
-    // The main container holds both absolute layers relative to itself
     <main className="main-container">
-      {/* {isLoading && <Preloader onComplete={() => setIsLoading(false)} />} */}
-      <HeaderNavH />
-      <CursorTilt className="img-container" id="hero-image">
-        <Image
-          alt="Background Mobile"
-          src={bgImageMobile}
-          quality={75}
-          fill
-          priority
-          className="bg-img-home mobile-bg" // Added 'mobile-bg' class
-        />
-        {/* <Image
-          alt="Background Desktop"
-          src={bgImageDesktop}
-          quality={100}
-          fill
-          priority
-          className="bg-img-home desktop-bg" // Added 'desktop-bg' class
-        /> */}
-      </CursorTilt>
-
-      <ParallaxHero />
-
-      <div className="text-container">
-        <div className="text-left">
-          <div className="blur-container-heading">
-            <BlurText
-              // key={isLoading.toString()}
-              text="Akash"
-              delay={150}
-              startDelay={textDelay}
-              animateBy="letters"
-              direction="top"
-              className="blur-text-heading"
-            />
-          </div>
-          <div className="blur-container-small">
-            <BlurText
-              // key={isLoading.toString()}
-              text="Jack of all trades, master of none, though oftentimes better than a master of one"
-              delay={200}
-              startDelay={textDelay}
-              animateBy="words"
-              direction="top"
-              className="blur-text-small"
-            />
-          </div>
-        </div>
-      </div>
-      <DragClick />
+      {/* <MeshGradientBG/> */}
+      <MeshGradient
+        speed={0.35}
+        scale={0.85}
+        distortion={0.7}
+        swirl={0.4}
+        frame={306616.82300010807}
+        grainMixer={0.75}
+        grainOverlay={0.35}
+        colors={["#0D5976", "#296790", "#63848D", "#090A07", "#4C4726", "#4A3602", "#2A1301"]}
+        className="mesh-gradient-bg"
+        style={{
+          filter: "saturate(120%)",
+          height: "100dvh",
+          width: "100dvw",
+        }}
+      />
+      <DragClick
+        thumbnailSrc="/assets/cards/PNG/card-joker-01.png"
+        fullSizeSrc="/assets/cards/PNG/card-back-09.png"
+      />
     </main>
   );
 }

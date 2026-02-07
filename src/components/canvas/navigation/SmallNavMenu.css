@@ -1,0 +1,211 @@
+:root {
+  --warm-white: #fffaf5;
+  --dark-black-V1: #020202;
+  --dark-black-V2: #070707;
+  --light-black: #1a1a1a;
+  --lighter-gray: #999999;
+  --darker-gray: #666666;
+  --boder-white-O-0d: #ffffff0d;
+  --boder-white-O-1a: #ffffff1a;
+}
+
+/* 1. Main Wrapper - THE EXPANDING CARD */
+.small-nav-wrapper {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  /* Updated z-index to match Navigation rule (1001-2000) */
+  z-index: 1500; 
+  font-family: "Inter", sans-serif;
+
+  /* Initial State (Closed) */
+  width: 56px;
+  height: 56px;
+  background-color: var(--dark-black-V1);
+  border-radius: 18px; 
+
+  border: 1px solid var(--warm-white);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+
+  /* VERSION A ANIMATION: CSS Transitions for size */
+  transition:
+    width 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    border-radius 0.6s ease,
+    border-color 0.3s ease;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Open State */
+.small-nav-wrapper.open {
+  width: 280px; 
+  height: 280px; 
+  padding: 2.5rem 2.5rem 5.5rem 2.5rem; 
+}
+
+/* 2. Content Container */
+.nav-content {
+  opacity: 0; 
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Show content when open (delayed slightly) */
+.small-nav-wrapper.open .nav-content {
+  opacity: 1;
+  pointer-events: auto;
+  transition-delay: 0.1s;
+}
+
+/* --- LIST ITEMS --- */
+.nav-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-item-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--lighter-gray);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--boder-white-O-0d);
+  cursor: pointer;
+}
+
+.nav-item-container:last-child .nav-item {
+  border-bottom: none;
+}
+
+/* --- TEXT STAGGER SETUP --- */
+.nav-text-mask {
+  overflow: hidden;
+  display: block;
+}
+
+.nav-item-text {
+  display: block;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Hover: Slide Text */
+.nav-item:hover .nav-item-text {
+  color: var(--warm-white);
+}
+
+/* --- HOVER LINE --- */
+.nav-line-active {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--warm-white);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-item:hover .nav-line-active {
+  transform: scaleX(1);
+}
+
+/* --- ARROW --- */
+.nav-arrow {
+  font-size: 1rem;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  color: var(--warm-white);
+}
+
+.nav-item:hover .nav-arrow {
+  opacity: 1;
+  transform: translateX(0px);
+}
+
+/* --- FOOTER --- */
+.nav-footer {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--boder-white-O-1a);
+}
+
+.social-group {
+  display: flex;
+  gap: 12px;
+}
+.footer-links-group {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icon-svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--warm-white);
+  opacity: 0.5;
+  transition: opacity 0.3s;
+  cursor: pointer;
+}
+.social-icon-svg:hover {
+  opacity: 1;
+}
+
+.footer-link {
+  color: var(--darker-gray);
+  font-size: 0.7rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: color 0.3s;
+}
+.footer-link:hover {
+  color: var(--warm-white);
+}
+
+/* --- TRIGGER BUTTON --- */
+.nav-trigger-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  /* Updated z-index to match Navigation rule */
+  z-index: 1501;
+  svg {
+    stroke: var(--warm-white);
+  }
+}

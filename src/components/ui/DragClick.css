@@ -29,7 +29,7 @@
 .full-size.active {
   display: block;
   z-index: 10;
-  filter: drop-shadow(15px 15px 10px #00000060);
+  /* filter: drop-shadow(15px 15px 10px #00000060); */
   cursor: var(--ponter-mouse-cursor);
 }
 
@@ -45,17 +45,18 @@
   display: block;
   /* Next.js Image fix: ensure object-fit if using next/image */
   object-fit: cover;
-  filter: drop-shadow(15px 15px 10px #00000060);
+  /* filter: drop-shadow(15px 15px 10px #00000060); */
 }
 
 /* --- Draggable Wrapper --- */
 .drag-container {
   position: absolute; /* Changed from relative to absolute for placement */
-  bottom: 50px; /* Place it somewhere nice */
-  right: 50px;
+  bottom: 2rem;
+  /* right: calc(2rem + 56px + 2rem); */
+  left: 2rem;
   padding: 10px;
-  border: dashed 2px #222222; /* Using rgba for "white" */
-  backdrop-filter: blur(5px);
+  border: dashed 2px #fff;
+  /* backdrop-filter: blur(5px); */
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -106,10 +107,10 @@
     width: 90dvw;
     height: auto;
   }
-  .drag-container {
-    border: dashed 2px #222222; /* Using rgba for "white" */
+  /* .drag-container {
+    border: dashed 2px #fff;
     backdrop-filter: blur(0px);
-  }
+  } */
   .thumbnail,
   .drag-container {
     width: 100px;

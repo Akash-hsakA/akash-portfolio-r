@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import FullScreenMenu from "@/components/canvas/navigation/FullScreenMenu";
+import ScreenMenu from "@/components/canvas/navigation/ScreenMenu";
 
 import "./HeaderNavH.css";
 
@@ -130,7 +130,7 @@ export default function HeaderNavH() {
         </div>
       </header>
       {/* 3. Render the Menu here, controlled by state */}
-      <FullScreenMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+      <ScreenMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </>
   );
 }
