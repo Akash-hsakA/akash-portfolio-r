@@ -11,10 +11,10 @@ import ParallaxHero from "@/components/canvas/home-page/ParallaxHero";
 import DragClick from "@/components/ui/DragClick";
 
 import Image from "next/image";
-// import bgImageDesktop from "../../public/image/home-page-image/portfolio-home-page-desktop-image.png";
-import bgImageMobile from "../../public/image/home-page-image/portfolio-home-page-mobile-image.png";
+// import bgImageDesktop from "../../../public/image/home-page-image/portfolio-home-page-desktop-image.png";
+import bgImageMobile from "../../../public/image/home-page-image/portfolio-home-page-mobile-image.png";
 
-import "./globals.css";
+import "../globals.css";
 import "./page.css";
 
 export default function Home() {
