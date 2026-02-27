@@ -72,8 +72,10 @@ export default function Home() {
         </div>
       </div>
       <DragClick
-        thumbnailSrc="/assets/cards/PNG/card-joker-01.png"
-        fullSizeSrc="/assets/cards/PNG/card-back-09.png"
+        frontSrc="/assets/cards/PNG/card-joker-01.png"
+        backSrc="/assets/cards/PNG/card-back-09.png"
+        heading="Joker’s Curiosity"
+        description="test "
       />
     </main>
   );
