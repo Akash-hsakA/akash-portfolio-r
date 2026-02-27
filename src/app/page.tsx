@@ -1,5 +1,6 @@
 "use client";
 import { useLoader } from "@/context/LoaderContext";
+// import CustomCursor from "@/components/ui/Cursor";
 import DragClick from "@/components/ui/DragClick";
 
 import { MeshGradient } from "@paper-design/shaders-react";
@@ -16,6 +17,7 @@ export default function Home() {
 
   return (
     <main className="main-container">
+      {/* <CustomCursor /> */}
       {/* <MeshGradientBG/> */}
       <MeshGradient
         speed={0.35}
@@ -34,8 +36,16 @@ export default function Home() {
         }}
       />
       <DragClick
-        thumbnailSrc="/assets/cards/PNG/card-joker-01.png"
-        fullSizeSrc="/assets/cards/PNG/card-back-09.png"
+        frontSrc="/assets/cards/PNG/card-joker-01.png"
+        backSrc="/assets/cards/PNG/card-back-05.png"
+        heading="Joker’s Curiosity"
+        description="He didn't grow up chasing a role... He grew up chasing questions! That young boy was endlessly curious about the world!
+        How things worked beneath the surface. He observed patterns. He broke things down. He wondered why before asking how. While most 
+        people move toward labels, he moved toward learning. His interests were never forced. If something sparked curiosity, he followed 
+        it...deeply! Over time, this instinct shaped him into a developer. But even now, he doesn't want to lock himself in a single title. 
+        Curiosity never fits neatly into boxes, right?! He blends logic with creativity, structure with imagination. He learns across 
+        domains & each new skill becomes a lens! A mind trained to explore, to understand and to build. And everything truly shifted the 
+        day he discovered..."
       />
     </main>
   );

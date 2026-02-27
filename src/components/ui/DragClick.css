@@ -1,122 +1,267 @@
-/* src/components/canvas/DragClick.css */
+/* DragClick.css */
 
-/* --- Container for the Full Size Image --- */
+:root {
+  --card-aspect-ratio: 5 / 7;
+  --transperent-white: #ffffff10;
+  --transperent-black-99: #00000099;
+  --transperent-black-10: #00000010;
+  --warm-white: #FFFAF5;
+  --figtree-font: 'Figtree', sans-serif;
+}
 .drag-area-container {
   position: fixed;
-  top: 1rem;
-  left: 1rem;
-  right: 1rem;
-  bottom: 1rem;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 100;
+  perspective: 2000px; /* Crucial for deep 3D effect */
+}
+
+/* Background overlay fades in */
+.drag-area-container.active {
+  pointer-events: auto;
+  background: var(--transperent-black);
+  /* backdrop-filter: blur(10px); */
+  transition:
+    background 0.5s ease,
+    backdrop-filter 0.5s ease;
+}
+
+.content-wrapper {
+  --full-width: 90%;
+  --one-third-width: calc(var(--full-width) / 3);
+  --two-thirds-width: calc(var(--full-width) * 2 / 3);
+  height: 80vh;
+  width: var(--full-width);
+  max-width: 100dvw;
+  display: flex;
+  align-items: center;
+  gap: 5%;
+  pointer-events: none;
+  .text-section {
+    width: var(--two-thirds-width);
+  }
+  .card-section {
+    width: var(--one-third-width);
+  }
+}
+
+.content-wrapper.active {
+  pointer-events: auto;
+}
+
+/* Text is hidden via CSS, GSAP will animate it in */
+.text-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transform: translateX(-50px);
+  opacity: 0;
+  padding: 6rem;
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  background: var(--transperent-black-10);
+  border: 3px solid var(--transperent-white);
+  .font-style{
+    color: var(--warm-white);
+    font-family: var(--figtree-font);
+  }
+}
+
+.text-section .heading-span {
+  font-size: 2.5rem;
+}
+.text-section .description-span {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.card-section {
   display: flex;
   justify-content: center;
   align-items: center;
-  align-content: center;
-  pointer-events: none; /* Let clicks pass through when hidden */
-  z-index: 10;
-  /* background-color: black; */
 }
 
-/* --- Full Size Image State --- */
-.full-size {
+/* --- The 3D Card Mechanics --- */
+.card-3d {
   position: relative;
-  flex-shrink: 0;
-  flex-grow: 0;
-  height: 80%;
-  display: none;
-  pointer-events: auto; /* Enable clicking to close */
+  transform-style: preserve-3d;
 }
 
-.full-size.active {
-  display: block;
-  z-index: 10;
-  /* filter: drop-shadow(15px 15px 10px #00000060); */
-  cursor: var(--ponter-mouse-cursor);
+/* Size when Dragging */
+.drag-container .card-3d {
+  width: 150px;
+  height: 210px;
+  aspect-ratio: var(--card-aspect-ratio);
 }
 
-/* Thumbnail Image Size */
-.thumbnail,
+/* Size when Open */
+.card-section .card-3d {
+  width: 400px;
+  height: 560px;
+  aspect-ratio: var(--card-aspect-ratio);
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  overflow: hidden;
+  background-color: transparent;
+  margin: 5px;
+}
+
+.card-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  will-change: transform;
+  transform: translateZ(0); /* Hardware acceleration */
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+/* Draggable Source Container */
 .drag-container {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 10;
+  cursor: grab;
   width: 150px;
   height: 210px;
 }
 
-/* --- Thumbnail Image --- */
-.thumbnail {
-  display: block;
-  /* Next.js Image fix: ensure object-fit if using next/image */
-  object-fit: cover;
-  /* filter: drop-shadow(15px 15px 10px #00000060); */
+.drag-container.active {
+  pointer-events: none;
 }
 
-/* --- Draggable Wrapper --- */
-.drag-container {
-  position: absolute; /* Changed from relative to absolute for placement */
-  bottom: 2rem;
-  /* right: calc(2rem + 56px + 2rem); */
-  left: 2rem;
-  padding: 10px;
-  border: dashed 2px #fff;
-  /* backdrop-filter: blur(5px); */
-  border-radius: 10px;
+/* =========================================
+   UX RESPONSIVENESS (Close Logic)
+========================================= */
+
+/* 1. Mobile Close Button (Default styles) */
+.mobile-close-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  background: var(--transperent-white);
+  border: 1px solid var(--transperent-white);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10;
-  cursor: var(--grab-mouse-cursor) !important;
+  cursor: pointer;
+  z-index: 200;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.4s ease forwards;
+  display: none; /* Hidden by default */
 }
 
-.drag-container:active {
-  cursor: var(--grabbing-mouse-cursor) !important;
+/* Show Close Button ONLY on touch devices (Phones/Tablets) */
+@media (pointer: coarse) {
+  .mobile-close-btn {
+    display: flex;
+  }
 }
 
-/* --- The "Drag Me" Arrow & Text --- */
-.drag-container::after {
-  /* content: "drag & click me..."; */
+/* 2. Target Card Clickable Base Styles */
+.target-card-clickable {
+  position: relative;
+}
+
+.target-card-clickable .card-3d {
+  transition: filter 0.3s ease;
+}
+
+/* 3. Desktop Hover Indicator (The "Click to close" pill) */
+.desktop-close-indicator {
   position: absolute;
-  width: 200px;
-  height: auto;
-  /* Text Color */
-  color: #222222;
-  font-family: "figtree", sans-serif;
-  font-size: clamp(1.2rem, 1.2dvw, 2rem);
-  font-weight: 700;
-  text-align: center;
-  /* Position relative to the box */
-  bottom: 100%;
-  pointer-events: none; /* Don't block dragging */
-  margin: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  background: var(--transperent-black-99);
+  color: var(--warm-white);
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  font-family: var(--figtree-font);
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  z-index: 10;
+  pointer-events: none; /* Crucial: lets the click pass through to the card */
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--transperent-white);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Visibility Logic for Flip */
-.thumbnail.active {
-  visibility: hidden;
-  opacity: 0;
+/* Hover Effects ONLY for devices with a mouse (Desktop) */
+/* @media (hover: hover) and (pointer: fine) {
+  .target-card-clickable:hover .card-3d {
+    filter: brightness(0.8);
+  }
+  
+  .target-card-clickable:hover .desktop-close-indicator {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+} */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-.thumbnail,
-.thumbnail.flipping {
-  visibility: visible;
-  opacity: 1;
-}
+
+/* =========================================
+   MOBILE RESPONSIVENESS (Layout & Sizing)
+========================================= */
 
 @media (max-width: 768px) {
-  .drag-container {
-    bottom: 10dvw;
-    right: 10dvw;
-  }
-  .full-size {
-    width: 90dvw;
+  .content-wrapper {
+    /* This puts the Card on TOP and Text on BOTTOM */
+    flex-direction: column-reverse; 
+    justify-content: center;
+    gap: 1.5rem;
     height: auto;
+    max-height: 100dvh;
   }
-  /* .drag-container {
-    border: dashed 2px #fff;
-    backdrop-filter: blur(0px);
-  } */
-  .thumbnail,
-  .drag-container {
-    width: 100px;
-    height: 140px;
+
+  /* Make sections take full width */
+  .content-wrapper .text-section {
+    width: 75dvw;
+    margin: 0 auto;
+    padding: 1.5rem 1.5rem;
+    /* Update animation starting position to slide up instead of right */
+    transform: translateY(30px); 
   }
-  .drag-area-container{
-    padding-bottom: 25%;
+
+  .content-wrapper .card-section {
+    width: 100%;
+    margin-top: 3rem; /* Space from the top of the screen */
+  }
+
+  .text-section{
+    row-gap: 0.5rem;
+  }
+
+  /* Adjust typography for small screens */
+  .text-section .heading-span {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .text-section .description-span {
+    font-size: 0.8rem;
+    text-align: justify;
+    line-height: 1.5;
   }
 }
