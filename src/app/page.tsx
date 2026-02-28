@@ -35,6 +35,23 @@ export default function Home() {
           width: "100dvw",
         }}
       />
+      <div className="home-text-container">
+        <div className="fixed-w-h-textbox">
+          <span className="heading-1">Advik</span>
+        </div>
+
+        <div className="fixed-w-h-textbox">
+          <span className="heading-2">Ezra</span>
+        </div>
+
+        <div className="fixed-w-h-textbox">
+          <span className="heading-3">Developer & Creator</span>
+        </div>
+
+        <div className="fixed-w-h-textbox small-text-container" style={{ animationDelay: `${textDelay}ms` }}>
+          <span className="small-text">aka 'Akash'</span>
+        </div>
+      </div>
       <DragClick
         frontSrc="/assets/cards/PNG/card-joker-01.png"
         backSrc="/assets/cards/PNG/card-back-05.png"

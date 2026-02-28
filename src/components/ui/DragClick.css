@@ -3,8 +3,9 @@
 :root {
   --card-aspect-ratio: 5 / 7;
   --transperent-white: #ffffff10;
-  --transperent-black-99: #00000099;
   --transperent-black-10: #00000010;
+  --transperent-black-50: #00000050;
+  --transperent-black-99: #00000099;
   --warm-white: #FFFAF5;
   --figtree-font: 'Figtree', sans-serif;
 }
@@ -22,8 +23,7 @@
 /* Background overlay fades in */
 .drag-area-container.active {
   pointer-events: auto;
-  background: var(--transperent-black);
-  /* backdrop-filter: blur(10px); */
+  background: var(--transperent-black-50);
   transition:
     background 0.5s ease,
     backdrop-filter 0.5s ease;
@@ -186,7 +186,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.9);
-  background: var(--transperent-black-99);
+  background: var(--transperent-black-10);
   color: var(--warm-white);
   padding: 0.8rem 1.5rem;
   border-radius: 30px;
@@ -198,23 +198,12 @@
   gap: 8px;
   opacity: 0;
   z-index: 10;
-  pointer-events: none; /* Crucial: lets the click pass through to the card */
+  pointer-events: none; 
   backdrop-filter: blur(4px);
   border: 1px solid var(--transperent-white);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Hover Effects ONLY for devices with a mouse (Desktop) */
-/* @media (hover: hover) and (pointer: fine) {
-  .target-card-clickable:hover .card-3d {
-    filter: brightness(0.8);
-  }
-  
-  .target-card-clickable:hover .desktop-close-indicator {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-} */
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-10px); }
@@ -227,26 +216,22 @@
 
 @media (max-width: 768px) {
   .content-wrapper {
-    /* This puts the Card on TOP and Text on BOTTOM */
     flex-direction: column-reverse; 
     justify-content: center;
     gap: 1.5rem;
     height: auto;
     max-height: 100dvh;
   }
-
-  /* Make sections take full width */
   .content-wrapper .text-section {
     width: 75dvw;
     margin: 0 auto;
     padding: 1.5rem 1.5rem;
-    /* Update animation starting position to slide up instead of right */
     transform: translateY(30px); 
   }
 
   .content-wrapper .card-section {
     width: 100%;
-    margin-top: 3rem; /* Space from the top of the screen */
+    margin-top: 3rem;
   }
 
   .text-section{
